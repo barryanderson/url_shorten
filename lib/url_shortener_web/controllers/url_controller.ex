@@ -5,9 +5,17 @@ defmodule UrlShortenerWeb.UrlController do
   alias UrlShortener.Links.Url
 
   def create(conn, %{"url" => url_param}) do
-    case validate_url(url_param) do
+    down_url = String.downcase(url_param)
+
+    case validate_url(down_url) do
       {:ok, valid_url} ->
         with {:ok, %Url{} = url} <- Links.create_url(valid_url) do
+          fq_link =
+            current_url(conn)
+            |> String.replace(current_path(conn), "/")
+
+          url = Map.put(url, :hash, fq_link <> url.hash)
+
           conn
           |> put_status(:created)
           |> render("show.json", url: url)
