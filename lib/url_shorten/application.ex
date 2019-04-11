@@ -1,4 +1,4 @@
-defmodule UrlShortener.Application do
+defmodule UrlShorten.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,23 +9,23 @@ defmodule UrlShortener.Application do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      UrlShortener.Repo,
+      UrlShorten.Repo,
       # Start the endpoint when the application starts
-      UrlShortenerWeb.Endpoint
-      # Starts a worker by calling: UrlShortener.Worker.start_link(arg)
-      # {UrlShortener.Worker, arg},
+      UrlShortenWeb.Endpoint
+      # Starts a worker by calling: UrlShorten.Worker.start_link(arg)
+      # {UrlShorten.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: UrlShortener.Supervisor]
+    opts = [strategy: :one_for_one, name: UrlShorten.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    UrlShortenerWeb.Endpoint.config_change(changed, removed)
+    UrlShortenWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

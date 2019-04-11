@@ -1,8 +1,8 @@
-defmodule UrlShortenerWeb.UrlController do
-  use UrlShortenerWeb, :controller
+defmodule UrlShortenWeb.UrlController do
+  use UrlShortenWeb, :controller
 
-  alias UrlShortener.Links
-  alias UrlShortener.Links.Url
+  alias UrlShorten.Links
+  alias UrlShorten.Links.Url
 
   def create(conn, %{"url" => url_param}) do
     down_url = String.downcase(url_param)

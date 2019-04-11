@@ -1,4 +1,4 @@
-defmodule UrlShortener.DataCase do
+defmodule UrlShorten.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule UrlShortener.DataCase do
 
   using do
     quote do
-      alias UrlShortener.Repo
+      alias UrlShorten.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import UrlShortener.DataCase
+      import UrlShorten.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(UrlShortener.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(UrlShorten.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(UrlShortener.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(UrlShorten.Repo, {:shared, self()})
     end
 
     :ok

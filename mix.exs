@@ -1,9 +1,9 @@
-defmodule UrlShortener.MixProject do
+defmodule UrlShorten.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :url_shortener,
+      app: :url_shorten,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule UrlShortener.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {UrlShortener.Application, []},
+      mod: {UrlShorten.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

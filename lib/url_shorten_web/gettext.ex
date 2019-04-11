@@ -1,11 +1,11 @@
-defmodule UrlShortenerWeb.Gettext do
+defmodule UrlShortenWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import UrlShortenerWeb.Gettext
+      import UrlShortenWeb.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -20,5 +20,5 @@ defmodule UrlShortenerWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :url_shortener
+  use Gettext, otp_app: :url_shorten
 end

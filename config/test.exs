@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :url_shortener, UrlShortenerWeb.Endpoint,
+config :url_shorten, UrlShortenWeb.Endpoint,
   http: [port: 4002],
   server: false
 
@@ -10,9 +10,9 @@ config :url_shortener, UrlShortenerWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :url_shortener, UrlShortener.Repo,
+config :url_shorten, UrlShorten.Repo,
   username: "postgres",
   password: "postgres",
-  database: "url_shortener_test",
+  database: "url_shorten_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

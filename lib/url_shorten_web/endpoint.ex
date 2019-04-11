@@ -1,7 +1,7 @@
-defmodule UrlShortenerWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :url_shortener
+defmodule UrlShortenWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :url_shorten
 
-  socket "/socket", UrlShortenerWeb.UserSocket,
+  socket "/socket", UrlShortenWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -11,7 +11,7 @@ defmodule UrlShortenerWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :url_shortener,
+    from: :url_shorten,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -39,8 +39,8 @@ defmodule UrlShortenerWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_url_shortener_key",
+    key: "_url_shorten_key",
     signing_salt: "PwiFzQQ2"
 
-  plug UrlShortenerWeb.Router
+  plug UrlShortenWeb.Router
 end

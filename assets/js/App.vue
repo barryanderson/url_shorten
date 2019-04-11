@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>URL Shortener</h1>
+    <h1>URL Shorten</h1>
     <form class="form-wrapper cf">
       <input type="text"  name="user_url" id="user_url" v-model="user_url" placeholder="Enter URL" required>
       <button type="button" v-on:click="shorten">Shorten</button>
@@ -9,7 +9,7 @@
     <div v-if="shortened.length > 0" id="outputs">
       <div v-for="item in shortened" :key="item.new">
         <h3>{{item.old}}</h3>
-        <h4 :title="item.old" :id="item.new">{{item.new}}</h4>
+        <h4 :title="item.old" :id="item.new"><a :href="item.new" target="_blank">{{item.new}}</a></h4>
       </div>
     </div>
   </div>
@@ -27,7 +27,10 @@ export default {
     return {
       user_url: "",
       user_error: "",
-      shortened: []
+      shortened: [
+        {new: "http://localhost:4000/ii8y-KLg", old: "https://bbc.co.uk"},
+        {new: "http://localhost:4000/ii8y-KLg", old: "https://bbc.co.uk"}
+      ]
     }
   },
   methods: {
@@ -198,11 +201,14 @@ export default {
   padding: 4px 0px;
   color: #444;
   text-decoration: none;
-  font-size: 0.8em;
-  font-weight: 300;
+  font-size: 0.9em;
+}
+
+#outputs > div > h3 {
+  font-weight: 600;
 }
 
 #outputs > div > h4 {
-  font-weight: 600;
+  font-weight: 800;
 }
 </style>

@@ -1,12 +1,12 @@
-defmodule UrlShortener.Links do
+defmodule UrlShorten.Links do
   @moduledoc """
   The Links context.
   """
 
   import Ecto.Query, warn: false
-  alias UrlShortener.Repo
+  alias UrlShorten.Repo
 
-  alias UrlShortener.Links.Url
+  alias UrlShorten.Links.Url
 
   @doc """
   Gets a single url.

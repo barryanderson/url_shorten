@@ -1,5 +1,5 @@
-defmodule UrlShortenerWeb.PageControllerTest do
-  use UrlShortenerWeb.ConnCase
+defmodule UrlShortenWeb.PageControllerTest do
+  use UrlShortenWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

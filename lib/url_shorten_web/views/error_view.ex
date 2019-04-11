@@ -1,5 +1,5 @@
-defmodule UrlShortenerWeb.ErrorView do
-  use UrlShortenerWeb, :view
+defmodule UrlShortenWeb.ErrorView do
+  use UrlShortenWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

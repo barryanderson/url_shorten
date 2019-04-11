@@ -1,4 +1,4 @@
-defmodule UrlShortener.Links.Url do
+defmodule UrlShorten.Links.Url do
   use Ecto.Schema
   import Ecto.Changeset
 

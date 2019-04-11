@@ -1,6 +1,6 @@
-defmodule UrlShortenerWeb.UrlView do
-  use UrlShortenerWeb, :view
-  alias UrlShortenerWeb.UrlView
+defmodule UrlShortenWeb.UrlView do
+  use UrlShortenWeb, :view
+  alias UrlShortenWeb.UrlView
 
   def render("show.json", %{url: url}) do
     %{data: render_one(url, UrlView, "link.json")}

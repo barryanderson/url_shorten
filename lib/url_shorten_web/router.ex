@@ -1,5 +1,5 @@
-defmodule UrlShortenerWeb.Router do
-  use UrlShortenerWeb, :router
+defmodule UrlShortenWeb.Router do
+  use UrlShortenWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,12 +13,12 @@ defmodule UrlShortenerWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", UrlShortenerWeb do
+  scope "/api", UrlShortenWeb do
     pipe_through :api
     resources "/", UrlController, only: [:create]
   end
 
-  scope "/", UrlShortenerWeb do
+  scope "/", UrlShortenWeb do
     pipe_through :browser
 
     get("/:id", UrlController, :get_and_redirect)
@@ -26,7 +26,7 @@ defmodule UrlShortenerWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", UrlShortenerWeb do
+  # scope "/api", UrlShortenWeb do
   #   pipe_through :api
   # end
 end

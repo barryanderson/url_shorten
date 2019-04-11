@@ -1,10 +1,10 @@
-defmodule UrlShortener.LinksTest do
-  use UrlShortener.DataCase
+defmodule UrlShorten.LinksTest do
+  use UrlShorten.DataCase
 
-  alias UrlShortener.Links
+  alias UrlShorten.Links
 
   describe "urls" do
-    alias UrlShortener.Links.Url
+    alias UrlShorten.Links.Url
 
     @valid_attrs %{hash: "some hash", url: "some url"}
     @update_attrs %{hash: "some updated hash", url: "some updated url"}

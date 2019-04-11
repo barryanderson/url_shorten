@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(UrlShortener.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(UrlShorten.Repo, :manual)
