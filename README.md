@@ -1,4 +1,5 @@
 ![Travis Build Status](https://travis-ci.org/barryanderson/url_shorten.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/barryanderson/url_shorten/badge.svg?branch=master)](https://coveralls.io/github/barryanderson/url_shorten?branch=master)
 
 # UrlShorten
 

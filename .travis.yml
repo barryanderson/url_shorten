@@ -17,6 +17,5 @@ script:
 
 after_script:
  - mix format --check-formatted
- - mix compile
  - mix do ecto.create, ecto.migrate
  - mix test && MIX_ENV=test mix coveralls.travis
