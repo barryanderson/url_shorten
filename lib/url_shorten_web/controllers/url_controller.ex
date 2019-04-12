@@ -10,11 +10,7 @@ defmodule UrlShortenWeb.UrlController do
     case validate_url(down_url) do
       {:ok, valid_url} ->
         with {:ok, %Url{} = url} <- Links.create_url(valid_url) do
-          fq_link =
-            current_url(conn)
-            |> String.replace(current_path(conn), "/")
-
-          url = Map.put(url, :hash, fq_link <> url.hash)
+          url = Map.put(url, :hash, UrlShortenWeb.Endpoint.url() <> "/" <> url.hash)
 
           conn
           |> put_status(:created)
@@ -35,12 +31,14 @@ defmodule UrlShortenWeb.UrlController do
     end
   end
 
+  defp validate_url(url: ""), do: {:error, "No URL was supplied"}
+
   defp validate_url(url) do
     uri = URI.parse(url)
 
     case uri do
       %URI{scheme: nil} -> validate_url("http://" <> url)
-      %URI{host: nil} -> {:error, uri}
+      %URI{host: nil} -> {:error, "No URL was supplied"}
       uri -> check_url(uri, url)
     end
   end
