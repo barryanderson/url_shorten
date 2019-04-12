@@ -17,4 +17,5 @@ before_script:
   - mix format --check-formatted
   - mix local.rebar --force
   - mix local.hex --force
+  - mix do ecto.create, ecto.migrate
   - mix test && mix coveralls.travis
