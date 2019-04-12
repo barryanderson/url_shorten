@@ -1,17 +1,23 @@
 <template>
   <div id="app">
     <h1>URL Shorten</h1>
-    <form class="form-wrapper cf">
+
+    <form class="form-wrapper cf" v-on:submit.prevent="shorten">
       <input type="text"  name="user_url" id="user_url" v-model="user_url" placeholder="Enter URL" required>
-      <button type="button" v-on:click="shorten">Shorten</button>
+      <button type="button" v-on:click.prevent="shorten">Shorten</button>
     </form>
-    <div v-if="user_error.length > 0">{{user_error}}</div>
+
+    <div v-if="user_error.length > 0" id="notify">
+      {{user_error}}
+    </div>
+
     <div v-if="shortened.length > 0" id="outputs">
-      <div v-for="item in shortened" :key="item.new">
+      <div v-for="item in shortened" :key="item.new" class="links">
         <h3>{{item.old}}</h3>
         <h4 :title="item.old" :id="item.new"><a :href="item.new" target="_blank">{{item.new}}</a></h4>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -91,7 +97,6 @@ export default {
     background: #444;
     background: rgba(0,0,0,.2);
     border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
 }
 
 /* Form text input */
@@ -183,29 +188,40 @@ export default {
 
 #outputs {
   width: 500px;
-  margin: auto auto;
+  margin: 0 auto;
   border-radius: 10px;
   border: 1px solid #ccc;
 }
 
-#outputs > div {
-  border-bottom: 1px solid #ddd;
+#outputs div.links {
+  margin: 0 auto;
 }
 
-#outputs > div > h3,
-#outputs > div > h4 {
-  margin: 4px auto;
-  padding: 4px 0px;
-  color: #444;
-  text-decoration: none;
+#outputs > div.links:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+#outputs > div.links h3,
+#outputs > div.links h4 {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 5px auto;
+}
+
+#outputs > div.links h4 {
   font-size: 0.9em;
+  font-weight: 700;
 }
 
-#outputs > div > h3 {
-  font-weight: 600;
-}
+#notify {
+  background-color: rgba(255, 0 ,0, .3);
+  font-size: 0.9em;
 
-#outputs > div > h4 {
-  font-weight: 800;
+  max-width: 350px;
+  margin: 10px auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 </style>
