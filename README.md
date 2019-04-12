@@ -7,7 +7,7 @@
 
 A fast URL shortener implemented with the [Phoenix Framework](https://phoenixframework.org) and [Vue.js](https://vuejs.org/).
 
-The purpose of this project is to provide a simple problem domain for leaning how to develop, test, deploy and maintain Phoenix and Elixir applications.  The application is currently deployed to Heroku at [https://shorten-url-ba.herokuapp.com/](https://shorten-url-ba.herokuapp.com/).
+The purpose of this project is to provide a simple problem domain for learning how to develop, test, deploy and maintain Phoenix and Elixir applications.  The application is currently deployed to Heroku at [https://shorten-url-ba.herokuapp.com/](https://shorten-url-ba.herokuapp.com/).
 
 ## Running
 
