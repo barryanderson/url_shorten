@@ -20,3 +20,4 @@ after_script:
  - mix compile
  - mix do ecto.create, ecto.migrate
  - mix coveralls.travis
+ - mix test
