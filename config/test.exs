@@ -11,6 +11,7 @@ config :logger, level: :warn
 
 # Configure your database
 config :url_shorten, UrlShorten.Repo,
+  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "",
   database: "url_shorten_test",
