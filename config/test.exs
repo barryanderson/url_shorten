@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :url_shorten, UrlShorten.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "url_shorten_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
