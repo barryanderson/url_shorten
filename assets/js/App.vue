@@ -27,10 +27,7 @@ export default {
     return {
       user_url: "",
       user_error: "",
-      shortened: [
-        {new: "http://localhost:4000/ii8y-KLg", old: "https://bbc.co.uk"},
-        {new: "http://localhost:4000/ii8y-KLg", old: "https://bbc.co.uk"}
-      ]
+      shortened: []
     }
   },
   methods: {
