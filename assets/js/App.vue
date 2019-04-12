@@ -6,7 +6,7 @@
         <p>A fast URL shortener implemented with the Phoenix Framework and Vue.js.  For more information visit the <a href="https://github.com/barryanderson/url_shorten">GitHub page</a>.</p>
       </b-col>
     </b-row>
-    
+
     <b-row>
       <b-col>
         <b-form @submit.prevent="shorten">
@@ -14,10 +14,9 @@
             <b-form-input
               id="url_input"
               v-model="user_url"
-              required
             ></b-form-input>
             <b-input-group-append>
-              <b-button 
+              <b-button
                 @click.prevent="shorten"
                 variant="success">Shorten
               </b-button>
@@ -42,7 +41,7 @@
               <b-list-group-item v-for="item in shortened" :key="item.new" class="links">
                 <div class="old_link">{{item.old}}</div>
                 <div class="new_link">
-                  <a 
+                  <a
                     :href="item.new"
                     target="_blank"
                   >{{item.new}}</a>
