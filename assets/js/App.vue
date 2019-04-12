@@ -1,24 +1,60 @@
 <template>
-  <div id="app">
-    <h1>URL Shorten</h1>
+  <b-container fluid>
+    <b-row>
+      <b-col>
+        <h1>URL Shortener</h1>
+        <p>A fast URL shortener implemented with the Phoenix Framework and Vue.js.  For more information visit the <a href="https://github.com/barryanderson/url_shorten">GitHub page</a>.</p>
+      </b-col>
+    </b-row>
+    
+    <b-row>
+      <b-col>
+        <b-form @submit.prevent="shorten">
+          <b-input-group>
+            <b-form-input
+              id="url_input"
+              v-model="user_url"
+              required
+            ></b-form-input>
+            <b-input-group-append>
+              <b-button 
+                @click.prevent="shorten"
+                variant="success">Shorten
+              </b-button>
+            </b-input-group-append>
+          </b-input-group>
+          <b-form-invalid-feedback :state="validation">
+            {{user_error}}.
+          </b-form-invalid-feedback>
+        </b-form>
+      </b-col>
+    </b-row>
 
-    <form class="form-wrapper cf" v-on:submit.prevent="shorten">
-      <input type="text"  name="user_url" id="user_url" v-model="user_url" placeholder="Enter URL" required>
-      <button type="button" v-on:click.prevent="shorten">Shorten</button>
-    </form>
+    <b-row>
+      <b-col>
+        <b-card-group
+          v-if="shortened.length > 0"
+          class="m-2"
+          fade
+          deck>
+          <b-card header="Shortened Links">
+            <b-list-group>
+              <b-list-group-item v-for="item in shortened" :key="item.new" class="links">
+                <div class="old_link">{{item.old}}</div>
+                <div class="new_link">
+                  <a 
+                    :href="item.new"
+                    target="_blank"
+                  >{{item.new}}</a>
+                </div>
+              </b-list-group-item>
+            </b-list-group>
+          </b-card>
+        </b-card-group>
+      </b-col>
+    </b-row>
 
-    <div v-if="user_error.length > 0" id="notify">
-      {{user_error}}
-    </div>
-
-    <div v-if="shortened.length > 0" id="outputs">
-      <div v-for="item in shortened" :key="item.new" class="links">
-        <h3>{{item.old}}</h3>
-        <h4 :title="item.old" :id="item.new"><a :href="item.new" target="_blank">{{item.new}}</a></h4>
-      </div>
-    </div>
-
-  </div>
+  </b-container >
 </template>
 
 <script>
@@ -34,6 +70,11 @@ export default {
       user_url: "",
       user_error: "",
       shortened: []
+    }
+  },
+  computed: {
+    validation () {
+      return this.user_error == null || this.user_error.length <= 0
     }
   },
   methods: {
@@ -59,169 +100,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#main-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  overflow: hidden;
-}
-
-.cf:before, .cf:after{
-    content:"";
-    display:table;
-}
-
-.cf:after{
-    clear:both;
-}
-
-.cf{
-    zoom:1;
-}
-/* Form wrapper styling */
-.form-wrapper {
-    width: 500px;
-    padding: 15px;
-    margin: 50px auto 10px auto;
-    background: #444;
-    background: rgba(0,0,0,.2);
-    border-radius: 10px;
-}
-
-/* Form text input */
-
-.form-wrapper input {
-    width: 380px;
-    height: 20px;
-    padding: 10px 5px;
-    float: left;
-    font: bold 15px;
-    border: 0;
-    background: #eee;
-    border-radius: 3px 0 0 3px;
-}
-
-.form-wrapper input:focus {
-    outline: 0;
-    background: #fff;
-    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-}
-
-.form-wrapper input::-webkit-input-placeholder {
-   color: #999;
-   font-weight: normal;
-   font-style: italic;
-}
-
-.form-wrapper input:-moz-placeholder {
-    color: #999;
-    font-weight: normal;
-}
-
-.form-wrapper input:-ms-input-placeholder {
-    color: #999;
-    font-weight: normal;
-}
-
-/* Form submit button */
-.form-wrapper button {
-    overflow: visible;
-    position: relative;
-    float: right;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    height: 40px;
-    width: 110px;
-    font: bold 15px/40px;
-    color: #fff;
-    text-transform: uppercase;
-    background: #d83c3c;
-    border-radius: 0 3px 3px 0;
-    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-}
-
-.form-wrapper button:hover{
-    background: #e54040;
-}
-
-.form-wrapper button:active,
-.form-wrapper button:focus{
-    background: #c42f2f;
-    outline: 0;
-}
-
-.form-wrapper button:before { /* left arrow */
-    content: '';
-    position: absolute;
-    border-width: 8px 8px 8px 0;
-    border-style: solid solid solid none;
-    border-color: transparent #d83c3c transparent;
-    top: 12px;
-    left: -6px;
-}
-
-.form-wrapper button:hover:before{
-    border-right-color: #e54040;
-}
-
-.form-wrapper button:focus:before,
-.form-wrapper button:active:before{
-        border-right-color: #c42f2f;
-}
-
-.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
-    border: 0;
-    padding: 0;
-}
-
-#outputs {
-  width: 500px;
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-#outputs div.links {
-  margin: 0 auto;
-}
-
-#outputs > div.links:not(:last-child) {
-  border-bottom: 1px solid #ccc;
-}
-
-#outputs > div.links h3,
-#outputs > div.links h4 {
-  font-size: 0.8em;
-  font-weight: 500;
-  margin: 5px auto;
-}
-
-#outputs > div.links h4 {
-  font-size: 0.9em;
-  font-weight: 700;
-}
-
-#notify {
-  background-color: rgba(255, 0 ,0, .3);
-  font-size: 0.9em;
-
-  max-width: 350px;
-  margin: 10px auto;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+.old_link {
+  font-size: 0.7em;
 }
 </style>
