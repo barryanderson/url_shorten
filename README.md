@@ -1,3 +1,5 @@
+![Travis Build Status](https://travis-ci.org/barryanderson/url_shorten.svg?branch=master)
+
 # UrlShorten
 
 To start your Phoenix server:
