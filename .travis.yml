@@ -10,12 +10,13 @@ otp_release:
 addons:
   postgresql: '10.6'
 
+env:
+  - MIX_ENV=test
+
 script:
+ - mix format --check-formatted
  - mix local.rebar --force
  - mix local.hex --force
  - mix deps.get
-
-after_script:
- - mix format --check-formatted
  - mix do ecto.create, ecto.migrate
  - mix test && mix coveralls.travis
